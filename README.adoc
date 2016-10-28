@@ -1,4 +1,7 @@
-[[Fresh Leads REST API]]
-mvn spring-boot:run
-mvn install
-java -jar target/jarfile
+
+
+* mvn spring-boot:run
+
+* mvn install
+
+* java -jar target/jarfile
