@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title>Lab Rat</title>
+    <link rel="stylesheet" href="/main.css" />
+</head>
+<body>
+    <div>
+        <span style="height: 0; width: 0; left: -90px; position: absolute" id="authenticator" th:text="${#authorization.expression('isAuthenticated()')}"></span>.
+    </div>
+    <div id="app"></div>
+
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+
+        var isAuthenticated = document.getElementById("authenticator").innerHTML
+
+        /*]]>*/
+    </script>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
