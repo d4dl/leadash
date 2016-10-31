@@ -45,8 +45,8 @@ import java.util.List;
 @Configuration
 @EnableSpringConfigured
 @ComponentScan("com.d4dl.model, com.d4dl.data, com.d4dl.controller, com.d4dl.config")
-@Import(Swagger2DocumentationConfiguration.class)
 @EnableSwagger2
+@Import({Swagger2DocumentationConfiguration.class, springfox.documentation.spring.data.rest.configuration.SpringDataRestConfiguration.class})
 public class LeadashApplication implements RepositoryRestConfigurer {
 
 	@Autowired
