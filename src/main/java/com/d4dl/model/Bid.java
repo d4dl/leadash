@@ -36,5 +36,5 @@ public class Bid extends BaseEntity {
 	private Double amount;
 	private String notes;
 
-	private Bid() {}
+	public Bid() {}
 }
