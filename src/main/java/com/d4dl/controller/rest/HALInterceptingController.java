@@ -62,7 +62,7 @@ public abstract class HALInterceptingController {
             return pagedResourcesAssembler.toEmptyResource(page, domainType, baseLink);
         }
 
-        return baseLink == null ? pagedResourcesAssembler.toResource((Page<Object>)page, assembler) : pagedResourcesAssembler.toResource(page, assembler, baseLink);
+        return baseLink == null ? pagedResourcesAssembler.toResource((Page<Object>)page, assembler) : pagedResourcesAssembler.toResource((Page<Object>)page, assembler, baseLink);
     }
 
     private List<Link> getCollectionResourceLinks(Class domainType) {

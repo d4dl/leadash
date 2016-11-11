@@ -22,6 +22,8 @@ public class BidController extends HALInterceptingController {
     public @ResponseBody
     Resources<?> getBids(Pageable pageable, PersistentEntityResourceAssembler assembler) throws Exception {
         Page<Bid> bids = bidRepository.findAll(pageable);
+        //This is where the wrapping magic happens so you can do stuff and still send hal with links back.
+        //I pulled this out of another project and haven't tested it.
 
         Resources<?> result = createResourceResponse(Bid.class, pageable, assembler, bids);
         return result;
