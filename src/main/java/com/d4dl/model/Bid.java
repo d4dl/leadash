@@ -37,4 +37,22 @@ public class Bid extends BaseEntity {
 	private String notes;
 
 	public Bid() {}
+
+
+	public Double getAmount() {
+		return amount;
+	}
+
+	public void setAmount(Double amount) {
+		this.amount = amount;
+	}
+
+
+	public String getNotes() {
+		return notes;
+	}
+
+	public void setNotes(String notes) {
+		this.notes = notes;
+	}
 }
