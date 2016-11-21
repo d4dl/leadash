@@ -15,6 +15,7 @@
  */
 package com.d4dl.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -25,6 +26,7 @@ import javax.persistence.ManyToOne;
  */
 @Data
 @Entity
+@JsonIgnoreProperties({"_links"})
 public class Bid extends BaseEntity {
 
 	@ManyToOne

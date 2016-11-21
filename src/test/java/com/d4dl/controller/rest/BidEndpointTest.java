@@ -1,6 +1,8 @@
 package com.d4dl.controller.rest;
 
 import com.d4dl.model.Bid;
+import com.fasterxml.jackson.databind.JavaType;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -65,11 +67,25 @@ public class BidEndpointTest {
         assertEquals("should have correct response code", 222.00, (Object)bid2Resp.getBody().getAmount());
         assertEquals("should have correct response code", "this is bid 2", bid2Resp.getBody().getNotes());
 
-        ResponseEntity<Map> response = testRestTemplate.getForEntity(baseUrl.toString() + "/api/bids", Map.class);
+        List<Bid> bids = doEntityGet("bids", Bid.class);
 
-        List bids = (List)((Map)response.getBody().get("_embedded")).get("bids");
         assertEquals("bids should be returned", 2 ,bids.size());
+        assertEquals("should have correct first bid", 111.00, (Object)bids.get(0).getAmount());
+        assertEquals("should have correct first bid", 222.00, (Object)bids.get(1).getAmount());
     }
 
+
+    protected <T> List<T> doEntityGet(String endpoint, Class<T> clazz) throws Exception {
+        ResponseEntity<Map> response = testRestTemplate.getForEntity(baseUrl.toString() + "/api/" + endpoint, Map.class);
+        List<Map> bidMaps = (List<Map>)((Map)response.getBody().get("_embedded")).get(endpoint);
+
+        ObjectMapper mapper = new ObjectMapper();
+        String jsonBids = mapper.writeValueAsString(bidMaps);
+
+        JavaType jacksonType = mapper.getTypeFactory().constructCollectionType(List.class, clazz);
+        List<T> resultList = mapper.readValue(jsonBids, jacksonType);
+
+        return resultList;
+    }
 
 }
