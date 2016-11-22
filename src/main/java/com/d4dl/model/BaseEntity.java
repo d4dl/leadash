@@ -15,11 +15,12 @@ import java.time.ZonedDateTime;
 @EntityListeners(AuditingEntityListener.class)
 @MappedSuperclass
 public abstract class BaseEntity implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long id;
-    private @Version @JsonIgnore Long version;
 
+    private @Version @JsonIgnore Long version;
 
     @LastModifiedDate
     @Type(type = "org.jadira.usertype.dateandtime.threeten.PersistentZonedDateTime")
