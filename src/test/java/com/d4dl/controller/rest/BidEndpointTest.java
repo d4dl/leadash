@@ -23,13 +23,18 @@ public class BidEndpointTest extends BaseEndpointTest {
         bid1.setAmount(111.00);
         bid1.setNotes("this is bid 1");
 
+        // JGBTODO: actually, it looks like if the post is missing fields, the response won't include them... weird
+        // I posted through the swagger UI using their full template and got an ID back. However, then I only posted
+        // a couple fields and the post worked, but the response was missing the id field.
+
         ResponseEntity<Bid> bid1Resp = doEntityPost("bids", bid1, Bid.class);
 
         assertEquals("should have correct response code", HttpStatus.CREATED, bid1Resp.getStatusCode());
         assertEquals("should have correct response code", 111.00, (Object)bid1Resp.getBody().getAmount());
         assertEquals("should have correct response code", "this is bid 1", bid1Resp.getBody().getNotes());
 
-        // JGBTODO: we aren't getting generated IDs because it doesn't seem that transaction management is being configured properly
+        Bid bid1read = doEntityGet("bids", 1, Bid.class);
+        assertEquals("should have correct response code", 111.00, (Object)bid1read.getAmount());
 
         Bid bid2 = new Bid();
         bid2.setAmount(222.00);

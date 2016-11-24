@@ -1,5 +1,6 @@
 package com.d4dl.controller.rest;
 
+import com.d4dl.model.Bid;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
@@ -39,7 +40,7 @@ public class BaseEndpointTest {
     }
 
 
-    // JGBTODO: this annotation isn't working, I don't think transaction management is working properly
+    // JGBTODO: actually, transaction are working... this annotation may be unnecessary
     @Transactional(Transactional.TxType.REQUIRES_NEW)
     protected <T> ResponseEntity<T> doEntityPost(String endpoint, T instance, Class<T> clazz) {
         return new TestRestTemplate().postForEntity(baseUrl + "/api/" + endpoint, instance, clazz);
@@ -47,7 +48,8 @@ public class BaseEndpointTest {
 
 
     protected <T> List<T> doEntityGet(String endpoint, Class<T> clazz) throws Exception {
-        ResponseEntity<Map> response = testRestTemplate.getForEntity(baseUrl.toString() + "/api/" + endpoint, Map.class);
+        String url = baseUrl.toString() + "api/" + endpoint;
+        ResponseEntity<Map> response = testRestTemplate.getForEntity(url, Map.class);
         List<Map> bidMaps = (List<Map>)((Map)response.getBody().get("_embedded")).get(endpoint);
 
         ObjectMapper mapper = new ObjectMapper();
@@ -57,6 +59,18 @@ public class BaseEndpointTest {
         List<T> resultList = mapper.readValue(jsonBids, jacksonType);
 
         return resultList;
+    }
+
+
+    protected <T> T doEntityGet(String endpoint, long id, Class<T> clazz) throws Exception {
+        String url = baseUrl.toString() + "api/" + endpoint + "/" + id;
+        ResponseEntity<Map> response = testRestTemplate.getForEntity(url, Map.class);
+        Object respBody = response.getBody();
+
+        ObjectMapper mapper = new ObjectMapper();
+        String jsonBids = mapper.writeValueAsString(respBody);
+
+        return mapper.readValue(jsonBids, clazz);
     }
 
 }
