@@ -1,5 +1,6 @@
 package com.d4dl.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -11,6 +12,7 @@ import java.util.List;
  */
 @Data
 @Entity
+@JsonIgnoreProperties({"_links"})
 public class Lead extends BaseEntity {
 
     private String name;
@@ -26,4 +28,10 @@ public class Lead extends BaseEntity {
 
     @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private List<Category> categories = new ArrayList();
+
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+
+    public LeadStatus getLeadStatus() { return leadStatus; }
+    public void setLeadStatus(LeadStatus leadStatus) { this.leadStatus = leadStatus; }
 }
