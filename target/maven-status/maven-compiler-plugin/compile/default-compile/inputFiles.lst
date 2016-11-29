@@ -5,10 +5,12 @@
 /Users/joshuadeford/dev/d4dl/leadash/src/main/java/com/d4dl/data/UserAccountRepository.java
 /Users/joshuadeford/dev/d4dl/leadash/src/main/java/com/d4dl/controller/SpringDataJpaUserDetailsService.java
 /Users/joshuadeford/dev/d4dl/leadash/src/main/java/com/d4dl/data/CampaignRepository.java
+/Users/joshuadeford/dev/d4dl/leadash/src/main/java/com/d4dl/controller/rest/UserAccountController.java
 /Users/joshuadeford/dev/d4dl/leadash/src/main/java/com/d4dl/model/Partner.java
 /Users/joshuadeford/dev/d4dl/leadash/src/main/java/com/d4dl/controller/SecurityConfiguration.java
 /Users/joshuadeford/dev/d4dl/leadash/src/main/java/com/d4dl/data/LeadRepository.java
 /Users/joshuadeford/dev/d4dl/leadash/src/main/java/com/d4dl/config/WebSocketConfiguration.java
+/Users/joshuadeford/dev/d4dl/leadash/src/main/java/com/d4dl/controller/rest/BidController.java
 /Users/joshuadeford/dev/d4dl/leadash/src/main/java/com/d4dl/controller/PartnerEventHandler.java
 /Users/joshuadeford/dev/d4dl/leadash/src/main/java/com/d4dl/controller/CategoryEventHandler.java
 /Users/joshuadeford/dev/d4dl/leadash/src/main/java/com/d4dl/controller/SpringDataRestEventHandler.java
@@ -17,11 +19,11 @@
 /Users/joshuadeford/dev/d4dl/leadash/src/main/java/com/d4dl/model/Campaign.java
 /Users/joshuadeford/dev/d4dl/leadash/src/main/java/com/d4dl/LeadashApplication.java
 /Users/joshuadeford/dev/d4dl/leadash/src/main/java/com/d4dl/data/PartnerRepository.java
-/Users/joshuadeford/dev/d4dl/leadash/src/main/java/com/d4dl/controller/rest/ScannerController.java
 /Users/joshuadeford/dev/d4dl/leadash/src/main/java/com/d4dl/controller/HomeController.java
 /Users/joshuadeford/dev/d4dl/leadash/src/main/java/com/d4dl/controller/LeadEventHandler.java
 /Users/joshuadeford/dev/d4dl/leadash/src/main/java/com/d4dl/data/CategoryRepository.java
 /Users/joshuadeford/dev/d4dl/leadash/src/main/java/com/d4dl/controller/CampaignEventHandler.java
 /Users/joshuadeford/dev/d4dl/leadash/src/main/java/com/d4dl/controller/UserAccountEventHandler.java
 /Users/joshuadeford/dev/d4dl/leadash/src/main/java/com/d4dl/model/Category.java
+/Users/joshuadeford/dev/d4dl/leadash/src/main/java/com/d4dl/controller/rest/HALInterceptingController.java
 /Users/joshuadeford/dev/d4dl/leadash/src/main/java/com/d4dl/SpringConfig.java

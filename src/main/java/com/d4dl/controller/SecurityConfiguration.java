@@ -47,18 +47,21 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.passwordEncoder(UserAccount.PASSWORD_ENCODER);
 	}
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("swagger-ui.html")
-				.addResourceLocations("classpath:/META-INF/resources/");
-
-		registry.addResourceHandler("/webjars/**")
-				.addResourceLocations("classpath:/META-INF/resources/webjars/");
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests()
-				.antMatchers("/api/**","/swagger-resources/**","/v2/**","/webjars/**", "/swagger-ui.html", "/*app.js", "/built/**", "/main.css").permitAll()
+				.antMatchers(
+						"/jgb.html",
+						"/api/**",
+						"/swagger-resources/**",
+						"/v2/**","/webjars/**",
+						"/swagger-ui.html",
+						"/*app.js",
+						"/built/**",
+						"/main.css").permitAll()
 				.anyRequest().authenticated()
 				.and()
 			.formLogin().loginPage("/")

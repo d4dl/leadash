@@ -48,6 +48,12 @@ public class DatabaseLoader implements CommandLineRunner {
 	@Override
 	public void run(String... strings) throws Exception {
 
+		UserAccount andrew = new UserAccount("andrew", "andrew", "ROLE_MANAGER");
+		andrew.setRoles(new String[]{"ROLE_MANAGER", "ORDER_PROCESSOR"});
+
+		UserAccount jamie = new UserAccount("jamie", "jamie", "ROLE_MANAGER");
+		jamie.setRoles(new String[]{"ROLE_MANAGER", "ORDER_PROCESSOR"});
+
 		UserAccount justin = new UserAccount("justin", "justin", "ROLE_MANAGER");
 		justin.setRoles(new String[]{"ROLE_MANAGER", "ORDER_PROCESSOR"});
 
@@ -56,12 +62,23 @@ public class DatabaseLoader implements CommandLineRunner {
         UserAccount myself = this.users.save(user);
 
 		SecurityContextHolder.getContext().setAuthentication(
+				new UsernamePasswordAuthenticationToken("jamie", "doesn't matter",
+						AuthorityUtils.createAuthorityList("ROLE_MANAGER")));
+
+		SecurityContextHolder.getContext().setAuthentication(
+				new UsernamePasswordAuthenticationToken("jgb", "doesn't matter",
+						AuthorityUtils.createAuthorityList("ROLE_MANAGER")));
+
+		SecurityContextHolder.getContext().setAuthentication(
 			new UsernamePasswordAuthenticationToken("justin", "doesn't matter",
 				AuthorityUtils.createAuthorityList("ROLE_MANAGER")));
 
 		this.partners.save(new Partner("Frodo", "Baggins", "ring bearer", myself));
 		this.partners.save(new Partner("Bilbo", "Baggins", "burglar", myself));
 		this.partners.save(new Partner("Gandalf", "the Grey", "wizard", myself));
+		users.save(andrew);
+		users.save(justin);
+		users.save(jamie);
 
 		SecurityContextHolder.getContext().setAuthentication(
 			new UsernamePasswordAuthenticationToken("oliver", "doesn't matter",

@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: io.springfox:springfox-core:2.6.1-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/io/springfox/springfox-core/2.6.1-SNAPSHOT/springfox-core-2.6.1-20161026.190509-8.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/io/springfox/springfox-core/2.6.1-SNAPSHOT/springfox-core-2.6.1-20161107.011312-10.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/io/springfox/springfox-core/2.6.1-SNAPSHOT/springfox-core-2.6.1-20161026.190509-8-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/io/springfox/springfox-core/2.6.1-SNAPSHOT/springfox-core-2.6.1-20161107.011312-10-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/io/springfox/springfox-core/2.6.1-SNAPSHOT/springfox-core-2.6.1-20161026.190509-8-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/io/springfox/springfox-core/2.6.1-SNAPSHOT/springfox-core-2.6.1-20161107.011312-10-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
