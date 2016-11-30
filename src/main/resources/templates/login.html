@@ -21,7 +21,11 @@
     </script>
 
     <div style="width: 250px;">
-    <form action="/" role="form" method="POST" >
+
+        auth = ${#authorization.expression('isAuthenticated()')}
+
+    <!--<form action="/" role="form" method="POST" >-->
+    <form th:action="@{/login}" method="post">
         <input className="form-control" placeholder="Username" ref="loginID" type="text" autofocus="" name="username" />
         <input className="form-control" placeholder="Password" ref="password" type="password" name="password" />
         <input type="checkbox" label="Remember Me" />

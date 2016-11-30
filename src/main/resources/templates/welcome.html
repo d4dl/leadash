@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title>Lead Dash</title>
+    <link rel="stylesheet" href="/main.css" />
+</head>
+<body>
+    Welcome to lead dash, <span sec:authentication="name"></span>
+
+    <br/><a href="/logout">Logout</a>
+</body>
+</html>

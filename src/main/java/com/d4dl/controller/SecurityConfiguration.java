@@ -54,8 +54,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http
 			.authorizeRequests()
 				.antMatchers(
-						"/jgb.html",
-						"/api/**",
+						// for proof of concept, bids is open to everyone, but other endpoints are behind authentication
+						"/api/bids/**",
+
 						"/swagger-resources/**",
 						"/v2/**","/webjars/**",
 						"/swagger-ui.html",
@@ -64,15 +65,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 						"/main.css").permitAll()
 				.anyRequest().authenticated()
 				.and()
-			.formLogin().loginPage("/")
-				.defaultSuccessUrl("/", true)
+			.formLogin().loginPage("/login")
+				.defaultSuccessUrl("/welcome", true)
 				.permitAll()
 				.and()
 			.httpBasic()
 				.and()
 			.csrf().disable()
 			.logout()
-				.logoutSuccessUrl("/");
+				.logoutSuccessUrl("/login");
         /**
         .formLogin().loginPage("/#/login")
                 .defaultSuccessUrl("/", true)

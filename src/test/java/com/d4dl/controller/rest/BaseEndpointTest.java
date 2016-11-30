@@ -27,11 +27,9 @@ public class BaseEndpointTest {
     @LocalServerPort
     private int port;
 
-    @Autowired
-    private TestRestTemplate testRestTemplate;
-
-
     protected String baseUrl;
+    protected String username;
+    protected String password;
 
 
     @Before
@@ -40,16 +38,31 @@ public class BaseEndpointTest {
     }
 
 
+    protected void setUser(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+
+    public TestRestTemplate getTestRestTemplate() {
+        if (username != null) {
+            return new TestRestTemplate(username, password);
+        } else {
+            return new TestRestTemplate();
+        }
+    }
+
+
     // JGBTODO: actually, transaction are working... this annotation may be unnecessary
     @Transactional(Transactional.TxType.REQUIRES_NEW)
     protected <T> ResponseEntity<T> doEntityPost(String endpoint, T instance, Class<T> clazz) {
-        return new TestRestTemplate().postForEntity(baseUrl + "/api/" + endpoint, instance, clazz);
+        return getTestRestTemplate().postForEntity(baseUrl + "/api/" + endpoint, instance, clazz);
     }
 
 
     protected <T> List<T> doEntityGet(String endpoint, Class<T> clazz) throws Exception {
         String url = baseUrl.toString() + "api/" + endpoint;
-        ResponseEntity<Map> response = testRestTemplate.getForEntity(url, Map.class);
+        ResponseEntity<Map> response = getTestRestTemplate().getForEntity(url, Map.class);
         List<Map> bidMaps = (List<Map>)((Map)response.getBody().get("_embedded")).get(endpoint);
 
         ObjectMapper mapper = new ObjectMapper();
@@ -64,7 +77,7 @@ public class BaseEndpointTest {
 
     protected <T> T doEntityGet(String endpoint, long id, Class<T> clazz) throws Exception {
         String url = baseUrl.toString() + "api/" + endpoint + "/" + id;
-        ResponseEntity<Map> response = testRestTemplate.getForEntity(url, Map.class);
+        ResponseEntity<Map> response = getTestRestTemplate().getForEntity(url, Map.class);
         Object respBody = response.getBody();
 
         ObjectMapper mapper = new ObjectMapper();
